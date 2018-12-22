@@ -1,0 +1,3 @@
+[submodule "lib/MicroEngine"]
+	path = lib/MicroEngine
+	url = git@github.com:tristanred/MicroEngine.git
