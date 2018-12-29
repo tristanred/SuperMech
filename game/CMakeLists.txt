@@ -66,6 +66,8 @@ add_executable(SuperMechs ${GAME_HEADERS} ${GAME_SOURCES})
 target_link_libraries(SuperMechs LIBTECH)
 target_link_libraries(SuperMechs MICROENGINE)
 
+add_subdirectory("../tools" ${CMAKE_CURRENT_BINARY_DIR}/tools)
+
 #
 # Adjust project properties
 #
