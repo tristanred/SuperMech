@@ -1,0 +1,25 @@
+﻿Memory Models (Health Brand)
+Name,Health,Attack,Defense,Special,Generation,Total,Average,+Diff
+Model 1,5,1,2,1,1,5,1.25,0.00%
+Model 2,10,1,2,1,1,6,1.5,20.00%
+Model 3,15,1,2,1,1,7,1.75,16.67%
+Model 4,25,1,2,1,2,9,2.25,28.57%
+Model 5,30,1,2,2,2,11,2.75,22.22%
+Model 6,30,3,2,3,2,14,3.5,27.27%
+Model 7,40,4,4,3,3,19,4.75,35.71%
+Model 8,50,4,4,4,3,22,5.5,15.79%
+Model 9,65,5,5,5,3,28,7,27.27%
+Model 10,100,6,6,6,4,38,9.5,35.71%
+
+Memory Models (Special Brand)
+Name,Health,Attack,Defense,Special,Generation,Total,Average,+Diff
+Model 1,5,1,1,2,1,5,1.25,0.00%
+Model 2,5,1,1,3,1,6,1.5,20.00%
+Model 3,10,1,1,3,1,7,1.75,16.67%
+Model 4,15,2,1,3,2,9,2.25,28.57%
+Model 5,15,2,1,5,2,11,2.75,22.22%
+Model 6,20,3,2,5,2,14,3.5,27.27%
+Model 7,25,3,3,8,3,19,4.75,35.71%
+Model 8,30,5,3,9,3,23,5.75,21.05%
+Model 9,30,7,5,10,3,28,7,21.74%
+Model 10,40,9,6,15,4,38,9.5,35.71%
