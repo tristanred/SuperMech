@@ -1,12 +1,8 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <string>
-
 #include <libtech/arraylist.h>
-#include <Parts.h>
-#include <pugixml.hpp>
+
+class MechPartBase;
 
 enum ParserState
 {
@@ -17,8 +13,9 @@ enum ParserState
     END
 };
 
-struct PartsList
+class PartsList
 {
+public:
     char* name;
     ArrayList<MechPartBase*>* parts;
 };
@@ -37,3 +34,5 @@ public:
 
     ArrayList<PartsList*>* GetResults();
 };
+
+bool is_newline(const char* contents);

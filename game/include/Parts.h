@@ -6,6 +6,9 @@
 class MechPartBase
 {
 public:
+    //MechPartBase();
+    //~MechPartBase();
+
     char* Name;
     char* BrandName;
     char* Manifacturer; // TODO : Ref to object
