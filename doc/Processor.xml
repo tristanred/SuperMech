@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<components type="Processor">
+	<brand name="SpeedBrand">
+		<component name="CPU Model 1" health="0" attack="1" defense="1" special="1" generation="1" />
+		<component name="CPU Model 2" health="0" attack="2" defense="1" special="1" generation="1" />
+		<component name="CPU Model 3" health="0" attack="3" defense="2" special="1" generation="1" />
+		<component name="CPU Model 4" health="0" attack="3" defense="3" special="2" generation="2" />
+		<component name="CPU Model 5" health="0" attack="3" defense="3" special="2" generation="2" />
+		<component name="CPU Model 6" health="0" attack="4" defense="3" special="3" generation="2" />
+		<component name="CPU Model 7" health="0" attack="5" defense="3" special="4" generation="3" />
+		<component name="CPU Model 8" health="0" attack="6" defense="4" special="4" generation="3" />
+		<component name="CPU Model 9" health="0" attack="7" defense="5" special="4" generation="3" />
+		<component name="CPU Model 10" health="0" attack="10" defense="7" special="5" generation="4" />
+	</brand>
+	<brand name="AttackBrand">
+		<component name="CPU Model 1" health="0" attack="2" defense="1" special="1" generation="1" />
+		<component name="CPU Model 2" health="0" attack="2" defense="1" special="2" generation="1" />
+		<component name="CPU Model 3" health="0" attack="3" defense="2" special="2" generation="1" />
+		<component name="CPU Model 4" health="0" attack="4" defense="2" special="3" generation="2" />
+		<component name="CPU Model 5" health="0" attack="4" defense="2" special="4" generation="2" />
+		<component name="CPU Model 6" health="0" attack="5" defense="2" special="5" generation="2" />
+		<component name="CPU Model 7" health="0" attack="7" defense="4" special="6" generation="3" />
+		<component name="CPU Model 8" health="0" attack="9" defense="5" special="6" generation="3" />
+		<component name="CPU Model 9" health="0" attack="10" defense="5" special="8" generation="3" />
+		<component name="CPU Model 10" health="0" attack="15" defense="9" special="10" generation="4" />
+	</brand>
+	<brand name="DefenseBrand">
+		<component name="CPU Model 1" health="0" attack="1" defense="2" special="1" generation="1" />
+		<component name="CPU Model 2" health="0" attack="1" defense="2" special="1" generation="1" />
+		<component name="CPU Model 3" health="0" attack="2" defense="3" special="1" generation="1" />
+		<component name="CPU Model 4" health="0" attack="2" defense="6" special="1" generation="2" />
+		<component name="CPU Model 5" health="0" attack="3" defense="6" special="2" generation="2" />
+		<component name="CPU Model 6" health="0" attack="3" defense="7" special="3" generation="2" />
+		<component name="CPU Model 7" health="0" attack="4" defense="9" special="4" generation="3" />
+		<component name="CPU Model 8" health="0" attack="6" defense="10" special="4" generation="3" />
+		<component name="CPU Model 9" health="0" attack="8" defense="10" special="5" generation="3" />
+		<component name="CPU Model 10" health="0" attack="9" defense="15" special="8" generation="4" />
+	</brand>
+</components>

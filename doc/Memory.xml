@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<components type="Memory">
+	<brand name="HealthBrand">
+		<component name="Model 1" health="5" attack="1" defense="2" special="1" generation="1" />
+		<component name="Model 2" health="10" attack="1" defense="2" special="1" generation="1" />
+		<component name="Model 3" health="15" attack="1" defense="2" special="1" generation="1" />
+		<component name="Model 4" health="25" attack="1" defense="2" special="1" generation="2" />
+		<component name="Model 5" health="30" attack="1" defense="2" special="2" generation="2" />
+		<component name="Model 6" health="30" attack="3" defense="2" special="3" generation="2" />
+		<component name="Model 7" health="40" attack="4" defense="4" special="3" generation="3" />
+		<component name="Model 8" health="50" attack="4" defense="4" special="4" generation="3" />
+		<component name="Model 9" health="65" attack="5" defense="5" special="5" generation="3" />
+		<component name="Model 10" health="100" attack="6" defense="6" special="6" generation="4" />
+	</brand>
+	<brand name="SpecialBrand">
+		<component name="Model 1" health="5" attack="1" defense="1" special="2" generation="1" />
+		<component name="Model 2" health="5" attack="1" defense="1" special="3" generation="1" />
+		<component name="Model 3" health="10" attack="1" defense="1" special="3" generation="1" />
+		<component name="Model 4" health="15" attack="2" defense="1" special="3" generation="2" />
+		<component name="Model 5" health="15" attack="2" defense="1" special="5" generation="2" />
+		<component name="Model 6" health="20" attack="3" defense="2" special="5" generation="2" />
+		<component name="Model 7" health="25" attack="3" defense="3" special="8" generation="3" />
+		<component name="Model 8" health="30" attack="5" defense="3" special="9" generation="3" />
+		<component name="Model 9" health="30" attack="7" defense="5" special="10" generation="3" />
+		<component name="Model 10" health="40" attack="9" defense="6" special="15" generation="4" />
+	</brand>
+</components>
