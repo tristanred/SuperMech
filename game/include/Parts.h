@@ -6,14 +6,15 @@
 class MechPartBase
 {
 public:
-    //MechPartBase();
-    //~MechPartBase();
+    MechPartBase();
+    ~MechPartBase();
 
     char* Name;
     char* BrandName;
     char* Manifacturer; // TODO : Ref to object
+    char* DescriptionText;
     int Generation;
-    
+
     // Attribute points
     int Health;
     int Attack;

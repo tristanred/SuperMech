@@ -1,6 +1,9 @@
 #include <stdio.h>
 
 #include <GameEngine.h>
+#include "Battle.h"
+#include "Mech.h"
+#include "Parts.h"
 
 int main(int argc, char** argv)
 {

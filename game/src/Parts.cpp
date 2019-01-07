@@ -2,31 +2,35 @@
 
 #include <stdlib.h>
 
-//MechPartBase::MechPartBase()
-//{
-//    Name = NULL;
-//    BrandName = NULL;
-//    Manifacturer = NULL;
-//    Generation = 0;
-//
-//    Health = 0;
-//    Attack = 0;
-//    Defense = 0;
-//    Speed = 0;
-//    Special = 0;
-//}
-//
-//MechPartBase::~MechPartBase()
-//{
-//    if (Name != NULL)
-//        delete(Name);
-//
-//    if (BrandName != NULL)
-//        delete(BrandName);
-//
-//    if (Manifacturer != NULL)
-//        delete(Manifacturer);
-//}
+MechPartBase::MechPartBase()
+{
+   Name = new char[64];
+   BrandName = new char[64];
+   Manifacturer = new char[64];
+   DescriptionText = new char[256];
+   Generation = 0;
+
+   Health = 0;
+   Attack = 0;
+   Defense = 0;
+   Speed = 0;
+   Special = 0;
+}
+
+MechPartBase::~MechPartBase()
+{
+   if (Name != NULL)
+       delete(Name);
+
+   if (BrandName != NULL)
+       delete(BrandName);
+
+   if (Manifacturer != NULL)
+       delete(Manifacturer);
+
+    if(DescriptionText != NULL)
+        delete(DescriptionText);
+}
 
 int MechPartBase::GetTotalPoints()
 {
