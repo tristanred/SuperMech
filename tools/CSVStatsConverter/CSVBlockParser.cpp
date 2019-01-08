@@ -6,6 +6,17 @@
 #include <pugixml.hpp>
 #include "Parts.h"
 
+/**
+ * Explanation of why we need to include Parts.cpp here.
+ * 
+ * When compiling this project, the CPP files of the SuperMechs project are not 
+ * referenced at the time where we create the template ArrayList<MechPartBase*> 
+ * so the template is not able to generate a call to the constructor (for some reason)
+ * Bringing in the CPP file allows the Constructor of MechPartBase to exist at the 
+ * time we are creating the template list (?)
+*/
+#include "../../game/src/Parts.cpp"
+
 CSVBlockParser::CSVBlockParser(const char* filePath)
 {
     isFinished = false;
