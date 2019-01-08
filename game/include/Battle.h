@@ -102,6 +102,10 @@ public:
 
     // Player options
     void Attack(AbilityAttack* ability);
+    
+    // Checking methods
+    bool IsWaitingForPlayer();
+    bool IsBattleOver();
 
 
     // Battle phases

@@ -9,8 +9,28 @@ int main(int argc, char** argv)
 {
     GameEngine* eng = new GameEngine();
     eng->Initialize();
+    
+    MechFrame* player = CreateDummy();
+    MechFrame* opp = CreateDummy();
+    
+    Battle* battle = new Battle(player, opp);
+    
+    while(true)
+    {
+        battle->Update();
+        
+        if(battle->IsWaitingForPlayer())
+        {
+            battle->Attack(NULL);
+        }
 
-    eng->Play();
+        if(battle->IsBattleOver())
+        {
+            break;
+        }
+    }
+
+    //eng->Play();
 
     printf("Super Mech !");
 

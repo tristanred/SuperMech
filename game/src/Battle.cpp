@@ -1,5 +1,7 @@
 #include "Battle.h"
 
+#include <stdio.h>
+
 Battle::Battle(MechFrame* a, MechFrame* b)
 {
     this->Player = a;
@@ -53,6 +55,8 @@ void Battle::Update_Turn()
             // Check if there is anything to do before the turn start
             playerActionDone = false;
 
+            this->ts = TS_WAIT_FOR_PLAYER;
+
             break;
         }
         case TS_WAIT_FOR_PLAYER:
@@ -85,11 +89,12 @@ void Battle::Update_Turn()
             }
             
             // Do stuff, apply effects
-            std::tuple<move_types, void*> nextAction = this->q.front();
-            this->q.pop();
+            std::tuple<move_types, void*> nextAction;
             
             while(this->q.empty() == false)
             {
+                nextAction = this->q.front();
+                this->q.pop();
                 switch(std::get<0>(nextAction))
                 {
                     case MT_ATTACK:
@@ -112,9 +117,6 @@ void Battle::Update_Turn()
                         break;
                     }
                 }
-                
-                nextAction = this->q.front();
-                this->q.pop();
             }
             
             break;
@@ -122,6 +124,22 @@ void Battle::Update_Turn()
         case TS_END:
         {
             // Check if the turn has won or loss the battle
+
+            if(this->Player->Health == 0)
+            {
+                // Loss
+                this->bs = BS_LOSS;
+
+                printf("Battle lost !");
+            }
+            else if(this->Opponent->Health == 0)
+            {
+                // Win
+                this->bs = BS_WIN;
+
+                printf("Battle won !");
+            }
+
             break;
         }
     }
@@ -132,13 +150,30 @@ void Battle::Attack(AbilityAttack* ability)
     if(this->ts == TS_WAIT_FOR_PLAYER)
     {
         this->playerActionDone = true;
-        std::tuple<move_types, void*> action = std::make_tuple(MT_ATTACK, ability);
+
+        auto defaultAbility = new AbilityAttack();
+        defaultAbility->ability = NULL;
+        defaultAbility->owner = Player;
+        defaultAbility->target = Opponent;
+        defaultAbility->type = MT_ATTACK;
+
+        std::tuple<move_types, void*> action = std::make_tuple(MT_ATTACK, defaultAbility);
 
         this->q.push(action);
     }
 }
 
+bool Battle::IsWaitingForPlayer()
+{
+    return this->ts == TS_WAIT_FOR_PLAYER;
+}
+
 void Battle::DoOpponentChoice()
 {
 
+}
+
+bool Battle::IsBattleOver()
+{
+    return this->bs == BS_WIN || this->bs == BS_LOSS;
 }
