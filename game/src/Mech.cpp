@@ -13,6 +13,15 @@ MechFrame::MechFrame()
     this->StorageModules = new ArrayList<MechPartBase*>();
     this->HeatSinks = new ArrayList<MechPartBase*>();
     this->BusChips = new ArrayList<MechPartBase*>();
+
+    CurrentHealth = 0;
+    CurrentExperience = 0;
+
+    HealthPoints = 0;
+    AttackPoints = 0;
+    DefensePoints = 0;
+    SpeedPoints = 0;
+    SpecialPoints = 0;
 }
 
 MechFrame::~MechFrame()
@@ -32,6 +41,75 @@ MechFrame::~MechFrame()
     delete(this->StorageModules);
     delete(this->HeatSinks);
     delete(this->BusChips);
+}
+
+void MechFrame::RecalculateStatsTotals()
+{
+    HealthPoints = 0;
+    AttackPoints = 0;
+    DefensePoints = 0;
+    SpeedPoints = 0;
+    SpecialPoints = 0;
+
+    for(int i = 0; i < Processors->Count(); i++)
+    {
+        MechPartBase* part = Processors->Get(i);
+
+        this->HealthPoints += part->Health;
+        this->AttackPoints += part->Attack;
+        this->DefensePoints += part->Defense;
+        this->SpeedPoints += part->Speed;
+        this->SpecialPoints += part->Special;
+    }
+
+    for(int i = 0; i < MemoryModules->Count(); i++)
+    {
+        MechPartBase* part = MemoryModules->Get(i);
+
+        this->HealthPoints += part->Health;
+        this->AttackPoints += part->Attack;
+        this->DefensePoints += part->Defense;
+        this->SpeedPoints += part->Speed;
+        this->SpecialPoints += part->Special;
+    }
+
+    for(int i = 0; i < StorageModules->Count(); i++)
+    {
+        MechPartBase* part = StorageModules->Get(i);
+
+        this->HealthPoints += part->Health;
+        this->AttackPoints += part->Attack;
+        this->DefensePoints += part->Defense;
+        this->SpeedPoints += part->Speed;
+        this->SpecialPoints += part->Special;
+    }
+
+    for(int i = 0; i < HeatSinks->Count(); i++)
+    {
+        MechPartBase* part = HeatSinks->Get(i);
+
+        this->HealthPoints += part->Health;
+        this->AttackPoints += part->Attack;
+        this->DefensePoints += part->Defense;
+        this->SpeedPoints += part->Speed;
+        this->SpecialPoints += part->Special;
+    }
+
+    for(int i = 0; i < BusChips->Count(); i++)
+    {
+        MechPartBase* part = BusChips->Get(i);
+
+        this->HealthPoints += part->Health;
+        this->AttackPoints += part->Attack;
+        this->DefensePoints += part->Defense;
+        this->SpeedPoints += part->Speed;
+        this->SpecialPoints += part->Special;
+    }
+}
+
+void MechFrame::ResetHealth()
+{
+    this->CurrentHealth = this->HealthPoints * HP_POINT_MULTIPLIER;
 }
 
 MechFrame* CreateDummy()
@@ -54,12 +132,8 @@ MechFrame* CreateDummy()
     proc->Speed = 1;
     proc->Special = 1;
     dummy->Processors->Add(proc);
-    
-    dummy->Health = 1;
-    dummy->Attack = 1;
-    dummy->Defense = 1;
-    dummy->Speed = 1;
-    dummy->Special = 1;
-    
+
+    dummy->RecalculateStatsTotals();
+
     return dummy;
 }

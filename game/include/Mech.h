@@ -9,13 +9,21 @@ class MechFrame
 public:
     char* Name;
     char* Description;
-    
-    // Stats
-    int Health;
-    int Attack;
-    int Defense;
-    int Speed;
-    int Special;
+
+    // Live Stats
+    int CurrentHealth;
+    int CurrentExperience;
+
+    // Stat Points
+    // Calculated from the total of the parts
+    int HealthPoints;
+    int AttackPoints;
+    int DefensePoints;
+    int SpeedPoints;
+    int SpecialPoints;
+
+    // Dynamic Stats
+    // Stuff like Crit%, dodge,
 
     int ProcessorSlots;
     ArrayList<MechPartBase*>* Processors;
@@ -34,6 +42,9 @@ public:
 
     MechFrame();
     ~MechFrame();
+
+    void RecalculateStatsTotals();
+    void ResetHealth();
 };
 
 MechFrame* CreateDummy();

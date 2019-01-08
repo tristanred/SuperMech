@@ -21,7 +21,7 @@ void Battle::Update()
     switch(bs)
     {
         case BS_START:
-        {
+        {            
             this->bs = BS_ONGOING;
             break;
         }
@@ -87,10 +87,10 @@ void Battle::Update_Turn()
                 this->ts = TS_END;
                 return;
             }
-            
+
             // Do stuff, apply effects
             std::tuple<move_types, void*> nextAction;
-            
+
             while(this->q.empty() == false)
             {
                 nextAction = this->q.front();
@@ -100,8 +100,8 @@ void Battle::Update_Turn()
                     case MT_ATTACK:
                     {
                         AbilityAttack* ability = (AbilityAttack*)std::get<1>(nextAction);
-                        ability->target->Health -= ability->owner->Attack;
-                        
+                        ability->target->CurrentHealth -= ability->owner->AttackPoints;
+
                         break;
                     }
                     case MT_HEAL:
@@ -118,21 +118,21 @@ void Battle::Update_Turn()
                     }
                 }
             }
-            
+
             break;
         }
         case TS_END:
         {
             // Check if the turn has won or loss the battle
 
-            if(this->Player->Health == 0)
+            if(this->Player->CurrentHealth <= 0)
             {
                 // Loss
                 this->bs = BS_LOSS;
 
                 printf("Battle lost !");
             }
-            else if(this->Opponent->Health == 0)
+            else if(this->Opponent->CurrentHealth <= 0)
             {
                 // Win
                 this->bs = BS_WIN;
