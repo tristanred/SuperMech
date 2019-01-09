@@ -4,6 +4,7 @@
 #include "Battle.h"
 #include "Mech.h"
 #include "Parts.h"
+#include <libtech/queue.h>
 
 int main(int argc, char** argv)
 {

@@ -33,10 +33,18 @@ void Battle::Update()
         }
         case BS_WIN:
         {
+            // Award xp to the player
+
+            this->bs = BS_END;
+
             break;
         }
         case BS_LOSS:
         {
+            // Do some other stuff
+
+            this->bs = BS_END;
+
             break;
         }
         case BS_END:
