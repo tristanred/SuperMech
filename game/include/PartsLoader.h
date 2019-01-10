@@ -3,6 +3,9 @@
 #include <libtech/arraylist.h>
 #include "Parts.h"
 
+/**
+ * Helper class to load parts from config files.
+ */
 class PartsLoader
 {
     /**

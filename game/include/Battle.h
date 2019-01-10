@@ -2,6 +2,8 @@
 
 #include "Parts.h"
 #include "Mech.h"
+#include "BattleActions.h"
+#include "BattleAbility.h"
 
 #include <queue>
 #include <tuple>
@@ -9,59 +11,7 @@
 class MechAbility;
 class MechItem;
 
-enum move_types
-{
-    MT_ATTACK,
-    MT_HEAL,
-    MT_FLEE,
-    MT_ITEM
-};
-
-struct AbilityAttack
-{
-    move_types type = MT_ATTACK;
-
-    MechAbility* ability;
-
-    MechFrame* owner;
-    MechFrame* target;
-};
-
-struct AbilityHeal
-{
-    move_types type = MT_HEAL;
-
-    MechAbility* ability;
-
-    MechFrame* owner;
-    MechFrame* target;
-};
-
-struct AbilityFlee
-{
-    move_types type = MT_FLEE;
-};
-
-struct AbilityItem
-{
-    move_types type = MT_ITEM;
-
-    MechItem* item;
-
-    MechFrame* target;
-};
-
-/*
-
-Move Types :
-USE_ATTACK [Ability, Target]    ----v
-REGEN_HEALTH [Ability, Target]  --> Could be the same
-FLEE
-USE_ITEM [Item, Target]
-
-
-*/
-
+// Battle playing and turn sequences
 enum battle_state
 {
     BS_START,
@@ -80,6 +30,18 @@ enum turn_state
     TS_END
 };
 
+/**
+ * This class is used to play out a battle. Implemented as a state machine with
+ * latches to wait on the player to make an action. The battle has two
+ * states components. The Battle State is the state of the battle such as
+ * "battle over" or "battle ongoing" or maybe "battle interrupted".
+ *
+ * A battle plays out over a sequence of turns, each turn plays out using the
+ * Turn State field. Each turn goes through the states in order and when a
+ * turn is over we evaluate if the battle has ended. If yes, the turn is over
+ * and the Battle State will switch to "Ended" and then the game can decide
+ * what to do next.
+ */
 class Battle
 {
 public:
@@ -89,20 +51,22 @@ public:
     enum battle_state bs;
     enum turn_state ts;
 
+    int turnNumber = 0;
+
     // Action latches
     bool playerActionDone;
 
     void Update();
     void Update_Turn();
 
-    std::queue<std::tuple<move_types, void*>> q;
+    std::queue<std::tuple<battle_action_types, void*>> q;
 
     MechFrame* Player;
     MechFrame* Opponent;
 
     // Player options
-    void Attack(AbilityAttack* ability);
-    
+    void Attack(ActionAttack* ability);
+
     // Checking methods
     bool IsWaitingForPlayer();
     bool IsBattleOver();

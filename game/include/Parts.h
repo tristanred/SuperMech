@@ -3,6 +3,9 @@
 // Howe much HP is worth 1 stat point. This is so we have greater amounts of HP
 #define HP_POINT_MULTIPLIER 5
 
+/**
+ * A part is what gives a mech its stats.
+ */
 class MechPartBase
 {
 public:

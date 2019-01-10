@@ -1,6 +1,7 @@
 #include "Mech.h"
 
 #include "Parts.h"
+#include "BattleAbility.h"
 #include <libtech/stdutils.h>
 
 MechFrame::MechFrame()
@@ -13,6 +14,7 @@ MechFrame::MechFrame()
     this->StorageModules = new ArrayList<MechPartBase*>();
     this->HeatSinks = new ArrayList<MechPartBase*>();
     this->BusChips = new ArrayList<MechPartBase*>();
+    this->MechAbilities = new ArrayList<BattleAbility*>();
 
     CurrentHealth = 0;
     CurrentExperience = 0;
@@ -35,12 +37,14 @@ MechFrame::~MechFrame()
     this->StorageModules->DeleteElements();
     this->HeatSinks->DeleteElements();
     this->BusChips->DeleteElements();
+    this->MechAbilities->DeleteElements();
 
     delete(this->Processors);
     delete(this->MemoryModules);
     delete(this->StorageModules);
     delete(this->HeatSinks);
     delete(this->BusChips);
+    delete(this->MechAbilities);
 }
 
 void MechFrame::RecalculateStatsTotals()
@@ -118,7 +122,8 @@ MechFrame* CreateDummy()
 
     strcpy(dummy->Name, "TN-01");
     strcpy(dummy->Description, "Dummy Mech");
-
+    
+    // Create equipped parts
     dummy->ProcessorSlots = 1;
     MechPartBase* proc = new MechPartBase();
     strcpy(proc->Name, "BASIC 001");
@@ -133,7 +138,12 @@ MechFrame* CreateDummy()
     proc->Special = 1;
     dummy->Processors->Add(proc);
 
+    BattleAbility* defaultAbility = new StrikeAbility(dummy);
+    dummy->MechAbilities->Add(defaultAbility);
+    
+    // Calculate stats values from equipment
     dummy->RecalculateStatsTotals();
+    dummy->ResetHealth();
 
     return dummy;
 }

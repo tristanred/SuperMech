@@ -21,7 +21,7 @@ void Battle::Update()
     switch(bs)
     {
         case BS_START:
-        {            
+        {
             this->bs = BS_ONGOING;
             break;
         }
@@ -97,7 +97,7 @@ void Battle::Update_Turn()
             }
 
             // Do stuff, apply effects
-            std::tuple<move_types, void*> nextAction;
+            std::tuple<battle_action_types, void*> nextAction;
 
             while(this->q.empty() == false)
             {
@@ -105,22 +105,18 @@ void Battle::Update_Turn()
                 this->q.pop();
                 switch(std::get<0>(nextAction))
                 {
-                    case MT_ATTACK:
+                    case BA_ATTACK:
                     {
-                        AbilityAttack* ability = (AbilityAttack*)std::get<1>(nextAction);
-                        ability->target->CurrentHealth -= ability->owner->AttackPoints;
+                        ActionAttack* ability = (ActionAttack*)std::get<1>(nextAction);
+                        ability->ability->UseAbility(this->Opponent);
 
                         break;
                     }
-                    case MT_HEAL:
+                    case BA_FLEE:
                     {
                         break;
                     }
-                    case MT_FLEE:
-                    {
-                        break;
-                    }
-                    case MT_ITEM:
+                    case BA_ITEM:
                     {
                         break;
                     }
@@ -132,20 +128,26 @@ void Battle::Update_Turn()
         case TS_END:
         {
             // Check if the turn has won or loss the battle
+            this->turnNumber++;
 
             if(this->Player->CurrentHealth <= 0)
             {
                 // Loss
                 this->bs = BS_LOSS;
 
-                printf("Battle lost !");
+                printf("Battle lost !\n");
             }
             else if(this->Opponent->CurrentHealth <= 0)
             {
                 // Win
                 this->bs = BS_WIN;
 
-                printf("Battle won !");
+                printf("Battle won !\n");
+            }
+            else
+            {
+                // Go back to start a new turn.
+                this->ts = TS_TURN_START;
             }
 
             break;
@@ -153,19 +155,19 @@ void Battle::Update_Turn()
     }
 }
 
-void Battle::Attack(AbilityAttack* ability)
+void Battle::Attack(ActionAttack* ability)
 {
     if(this->ts == TS_WAIT_FOR_PLAYER)
     {
         this->playerActionDone = true;
 
-        auto defaultAbility = new AbilityAttack();
-        defaultAbility->ability = NULL;
+        auto defaultAbility = new ActionAttack();
+        defaultAbility->ability = Player->MechAbilities->First();
         defaultAbility->owner = Player;
         defaultAbility->target = Opponent;
-        defaultAbility->type = MT_ATTACK;
+        defaultAbility->type = BA_ATTACK;
 
-        std::tuple<move_types, void*> action = std::make_tuple(MT_ATTACK, defaultAbility);
+        std::tuple<battle_action_types, void*> action = std::make_tuple(BA_ATTACK, defaultAbility);
 
         this->q.push(action);
     }

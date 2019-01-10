@@ -3,7 +3,16 @@
 #include <libtech/arraylist.h>
 
 class MechPartBase;
+class BattleAbility;
 
+/**
+ * MechFrames are the class that holds the information about a mech in the
+ * player's team. Mechs of different types have different names and are build
+ * differently so they have different constrains. Each mech is a collection
+ * of parts and it is the parts that gives the mechs it's stats points. Mechs
+ * also have battle abilities that can be chosen during a battle.
+ *
+ */
 class MechFrame
 {
 public:
@@ -39,6 +48,8 @@ public:
 
     int BusChipSlots;
     ArrayList<MechPartBase*>* BusChips;
+
+    ArrayList<BattleAbility*>* MechAbilities;
 
     MechFrame();
     ~MechFrame();
