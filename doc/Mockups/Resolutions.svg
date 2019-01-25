@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <pattern id="pattern-0" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
+      <rect x="0" y="0" width="50" height="100" style="fill: black;"/>
+    </pattern>
+    <pattern id="pattern-1" viewBox="0 0 100 100" patternUnits="userSpaceOnUse" preserveAspectRatio="none" width="100" height="100">
+      <title>Grid</title>
+      <rect width="50" height="50" style=""/>
+      <rect x="50" y="50" width="50" height="50" style=""/>
+    </pattern>
+    <pattern id="pattern-1-2" patternTransform="matrix(1, 0, 0, 1, 614.463013, 310)" xlink:href="#pattern-1"/>
+  </defs>
+  <g style="pointer-events: none;">
+    <title>1080</title>
+    <rect width="1920" height="1080" style="fill: rgb(232, 155, 12); stroke: rgb(0, 0, 0); stroke-width: 5px;">
+      <title>1080pRectangle</title>
+    </rect>
+    <text style="fill: rgb(51, 51, 51); font-size: 96px; white-space: pre;" x="1417.015" y="113.99"><title>1080pText</title>1920x1080</text>
+  </g>
+  <g style="pointer-events: none;">
+    <title>720p</title>
+    <rect width="1280" height="720" style="fill: rgb(218, 85, 85); stroke-width: 5px; stroke: rgb(0, 0, 0);" x="-2">
+      <title>720pRectangle</title>
+    </rect>
+    <text style="fill: rgb(51, 51, 51); font-size: 96px; white-space: pre;" x="830.012" y="113.99"><title>720pText</title>1280x720</text>
+  </g>
+  <g style="pointer-events: none;">
+    <title>480p</title>
+    <rect width="640" height="480" style="stroke-width: 5px; stroke: rgb(0, 0, 0); fill: rgb(150, 255, 0);">
+      <title>480pRectangle</title>
+    </rect>
+    <text style="fill: rgb(51, 51, 51); font-size: 96px; white-space: pre;" transform="matrix(1, 0, 0, 1, 185.609375, -21.484375)"><title>480pText</title><tspan x="54.402" y="138.482">640x480</tspan><tspan x="54.402" dy="1em">​</tspan></text>
+  </g>
+  <g style="pointer-events: none;" transform="matrix(1, 0, 0, 1, 351.910278, 206.733841)">
+    <title>720p_Tests</title>
+    <rect width="1280" height="720" style="stroke-width: 5px; stroke: rgb(0, 0, 0); fill: rgb(72, 12, 232);">
+      <title>720pRectangle</title>
+    </rect>
+    <rect width="720" height="720" style="stroke-width: 5px; stroke: rgb(0, 0, 0); fill: url(#pattern-1-2);" x="304.463" bx:origin="0.695 0.425">
+      <title>SafeArea</title>
+    </rect>
+    <text style="fill: rgb(255, 0, 0); font-size: 96px; white-space: pre;" x="830.012" y="113.99"><title>720pText</title>1280x720</text>
+  </g>
+</svg>

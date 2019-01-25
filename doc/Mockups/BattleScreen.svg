@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <title>Battle Screen</title>
+  <circle style="stroke-width: 5px; stroke: rgb(0, 0, 0); fill: rgb(0, 0, 255);" cx="101.339" cy="162.889" r="50"/>
+  <path d="M 490.291 192.492 L 540.291 292.492 L 440.291 292.492 L 490.291 192.492 Z" style="stroke-width: 5px; stroke: rgb(0, 0, 0); fill: rgb(255, 0, 0);" transform="matrix(1, -0.000015, 0.000015, 1, -136.266708, -79.59639)" bx:shape="triangle 440.291 192.492 100 100 0.5 0 1@857b35cd"/>
+  <rect x="39.284" y="298.873" width="150" height="150" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"/>
+  <text x="44.32" y="293.801" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Action Menu</text>
+  <rect x="279.016" y="298.873" width="150" height="150" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+  <text x="279.064" y="293.797" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Abilities Menu</text>
+  <text x="63.748" y="91.794" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Player</text>
+  <text x="295.204" y="91.794" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Opponent</text>
+  <g transform="matrix(1, 0, 0, 1, 0, 2)">
+    <title>AttackButton</title>
+    <rect x="51.339" y="312.326" width="100" height="34.47" style="fill: rgb(216, 216, 216);"/>
+    <text x="51.374" y="335.109" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Attack</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -0.000008, 39.470001)">
+    <title>Action2Button</title>
+    <rect x="51.339" y="312.326" width="100" height="34.47" style="fill: rgb(216, 216, 216);"/>
+    <text x="51.374" y="335.109" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Item</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -0.010876, 79.171021)">
+    <title>Action3Button</title>
+    <rect x="51.339" y="312.326" width="100" height="34.47" style="fill: rgb(216, 216, 216);"/>
+    <text x="51.374" y="335.109" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">Flee</text>
+  </g>
+  <g>
+    <title>AbilityButton</title>
+    <rect x="288.5" y="311.326" width="115" height="38" style="fill: rgb(216, 216, 216);"/>
+    <text x="310.188" y="336.982" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">ATK1</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0.528695, 88.544197)">
+    <title>AbilityButton</title>
+    <rect x="288.5" y="311.326" width="115" height="38" style="fill: rgb(216, 216, 216);"/>
+    <text style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;" y="336.982" x="310.188">ATK3<tspan x="310.18798828125" dy="1em">​</tspan><tspan x="310.18798828125" dy="1em">​</tspan></text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 42.171021)">
+    <title>AbilityButton</title>
+    <rect x="288.5" y="311.326" width="115" height="38" style="fill: rgb(216, 216, 216);"/>
+    <text x="310.188" y="336.982" style="white-space: pre; fill: rgb(51, 51, 51); font-size: 24px;">ATK2</text>
+  </g>
+</svg>
