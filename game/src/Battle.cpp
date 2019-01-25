@@ -22,7 +22,7 @@ void Battle::Update()
     {
         case BS_START:
         {
-            this->bs = BS_ONGOING;
+            this->SwitchBattleState(BS_ONGOING);
             break;
         }
         case BS_ONGOING:
@@ -35,7 +35,7 @@ void Battle::Update()
         {
             // Award xp to the player
 
-            this->bs = BS_END;
+            this->SwitchBattleState(BS_END);
 
             break;
         }
@@ -43,7 +43,7 @@ void Battle::Update()
         {
             // Do some other stuff
 
-            this->bs = BS_END;
+            this->SwitchBattleState(BS_END);
 
             break;
         }
@@ -63,7 +63,7 @@ void Battle::Update_Turn()
             // Check if there is anything to do before the turn start
             playerActionDone = false;
 
-            this->ts = TS_WAIT_FOR_PLAYER;
+            this->SwitchTurnState(TS_WAIT_FOR_PLAYER);
 
             break;
         }
@@ -73,7 +73,7 @@ void Battle::Update_Turn()
             // that this state.
             if(playerActionDone)
             {
-                this->ts = TS_OPPONENT_DECIDE;
+                this->SwitchTurnState(TS_OPPONENT_DECIDE);
                 playerActionDone = false;
             }
 
@@ -83,7 +83,7 @@ void Battle::Update_Turn()
         {
             // Play out the opponent turn.
             this->DoOpponentChoice();
-            this->ts = TS_RESOLVE;
+            this->SwitchTurnState(TS_RESOLVE);
 
             break;
         }
@@ -92,7 +92,7 @@ void Battle::Update_Turn()
             if(this->q.empty())
             {
                 // No actions ?
-                this->ts = TS_END;
+                this->SwitchTurnState(TS_END);
                 return;
             }
 
@@ -121,6 +121,8 @@ void Battle::Update_Turn()
                         break;
                     }
                 }
+                
+                this->OnActionResolved.Dispatch(nextAction);
             }
 
             break;
@@ -133,26 +135,38 @@ void Battle::Update_Turn()
             if(this->Player->CurrentHealth <= 0)
             {
                 // Loss
-                this->bs = BS_LOSS;
+                this->SwitchBattleState(BS_LOSS);
 
                 printf("Battle lost !\n");
             }
             else if(this->Opponent->CurrentHealth <= 0)
             {
                 // Win
-                this->bs = BS_WIN;
+                this->SwitchBattleState(BS_WIN);
 
                 printf("Battle won !\n");
             }
             else
             {
                 // Go back to start a new turn.
-                this->ts = TS_TURN_START;
+                this->SwitchTurnState(TS_TURN_START);
             }
 
             break;
         }
     }
+}
+
+void Battle::SwitchBattleState(battle_state newState)
+{
+    this->bs = newState;
+    this->OnBattleStateChanged.Dispatch(this->bs);
+}
+
+void Battle::SwitchTurnState(turn_state newState)
+{
+    this->ts = newState;
+    this->OnTurnStateChanged.Dispatch(this->ts);
 }
 
 void Battle::Attack(ActionAttack* ability)
@@ -180,7 +194,7 @@ bool Battle::IsWaitingForPlayer()
 
 void Battle::DoOpponentChoice()
 {
-
+    // Do nothing
 }
 
 bool Battle::IsBattleOver()

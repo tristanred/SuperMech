@@ -5,6 +5,8 @@
 #include "BattleActions.h"
 #include "BattleAbility.h"
 
+#include "Events/Event.h"
+
 #include <queue>
 #include <tuple>
 
@@ -58,7 +60,10 @@ public:
 
     void Update();
     void Update_Turn();
-
+    
+    void SwitchBattleState(battle_state newState);
+    void SwitchTurnState(turn_state newState);
+    
     std::queue<std::tuple<battle_action_types, void*>> q;
 
     MechFrame* Player;
@@ -70,8 +75,7 @@ public:
     // Checking methods
     bool IsWaitingForPlayer();
     bool IsBattleOver();
-
-
+    
     // Battle phases
     void StartTurn();
 
@@ -80,4 +84,9 @@ public:
     void DoOpponentChoice();
 
     void EndTurn(); // Applies effects
+
+    // Events
+    Event<battle_state> OnBattleStateChanged;
+    Event<turn_state> OnTurnStateChanged;
+    Event<std::tuple<battle_action_types, void*>> OnActionResolved;
 };
