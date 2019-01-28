@@ -5,16 +5,38 @@
 #include "Mech.h"
 #include "Parts.h"
 #include <libtech/queue.h>
+#include <tuple>
+
+void CbActionResolved(std::tuple<battle_action_types, void*> param)
+{
+    printf("Action Resolved\n");
+}
+
+void CbTurnChanged(turn_state param)
+{
+    printf("Turn state changed to %i\n", param);
+}
+
+void CbBattleChanged(battle_state param)
+{
+    printf("Battle state changed to %i\n", param);
+}
 
 int main(int argc, char** argv)
 {
     GameEngine* eng = new GameEngine();
     eng->Initialize();
     
+    auto test = eng->CreateTexture("jump.png");
+    
     MechFrame* player = CreateDummy();
     MechFrame* opp = CreateDummy();
     
     Battle* battle = new Battle(player, opp);
+    
+    battle->OnTurnStateChanged.Listen(&CbTurnChanged);
+    battle->OnBattleStateChanged.Listen(&CbBattleChanged);
+    battle->OnActionResolved.Listen(&CbActionResolved);
     
     while(true)
     {
@@ -33,7 +55,7 @@ int main(int argc, char** argv)
 
     //eng->Play();
 
-    printf("Super Mech !");
+    printf("Super Mech !\n");
 
     return 0;
 }

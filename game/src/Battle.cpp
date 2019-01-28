@@ -107,8 +107,8 @@ void Battle::Update_Turn()
                 {
                     case BA_ATTACK:
                     {
-                        ActionAttack* ability = (ActionAttack*)std::get<1>(nextAction);
-                        ability->ability->UseAbility(this->Opponent);
+                        ActionAttack* action = (ActionAttack*)std::get<1>(nextAction);
+                        action->ability->UseAbility(action->target);
 
                         break;
                     }
@@ -137,14 +137,14 @@ void Battle::Update_Turn()
                 // Loss
                 this->SwitchBattleState(BS_LOSS);
 
-                printf("Battle lost !\n");
+                //printf("Battle lost !\n");
             }
             else if(this->Opponent->CurrentHealth <= 0)
             {
                 // Win
                 this->SwitchBattleState(BS_WIN);
 
-                printf("Battle won !\n");
+                //printf("Battle won !\n");
             }
             else
             {

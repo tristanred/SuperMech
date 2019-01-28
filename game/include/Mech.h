@@ -4,6 +4,7 @@
 
 class MechPartBase;
 class BattleAbility;
+class MechGraphicSettings;
 
 /**
  * MechFrames are the class that holds the information about a mech in the
@@ -56,6 +57,9 @@ public:
 
     void RecalculateStatsTotals();
     void ResetHealth();
+    
+    // Graphical
+    MechGraphicSettings* Graphics;
 };
 
 MechFrame* CreateDummy();

@@ -2,6 +2,7 @@
 
 #include "Parts.h"
 #include "BattleAbility.h"
+#include "MechGraphic.h"
 #include <libtech/stdutils.h>
 
 MechFrame::MechFrame()
@@ -24,6 +25,8 @@ MechFrame::MechFrame()
     DefensePoints = 0;
     SpeedPoints = 0;
     SpecialPoints = 0;
+    
+    this->Graphics = new MechGraphicSettings();
 }
 
 MechFrame::~MechFrame()
