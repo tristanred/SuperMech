@@ -7,6 +7,10 @@ MapGameModule::MapGameModule(GameEngine* engine)
     : GameModule(engine)
 {
     engine->ResManager->AddFile("assets/grass.png", "grass");
+    engine->ResManager->AddFile("assets/water.png", "water");
+    engine->ResManager->AddFile("assets/rock.png", "rock");
+    engine->ResManager->AddFile("assets/empty.png", "empty");
+
     engine->ResManager->AddFile("assets/player.png", "player");
 
     this->Player = engine->CreateSprite();
@@ -15,6 +19,7 @@ MapGameModule::MapGameModule(GameEngine* engine)
     TilemapConfig config;
     config.width  = 10;
     config.height = 10;
+    config.tileset = new TileSet(engine->Renderer, 2, "grass", "water");
 
     this->tilemap = new Tilemap(engine, &config);
     this->tilemap->Setup(engine->Renderer);
@@ -31,7 +36,7 @@ MapGameModule::~MapGameModule()
 void MapGameModule::Update(unsigned int deltaTime)
 {
     GameModule::Update(deltaTime);
-    
+
     this->UpdatePlayerPosition();
 }
 
